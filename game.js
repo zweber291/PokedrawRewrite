@@ -1,3 +1,6 @@
+//For drawing control before game is started
+var drawEnabled = false;
+
 function startGame() {
   document.getElementById("countdown").textContent = 45; //Resets to 45 if restarting the game
   //https://assets.pokemon.com/assets/cms2/img/pokedex/full/###.png <- link for image
@@ -14,6 +17,9 @@ function startGame() {
   //Change image
   document.getElementById("image").src = sourceString;
 
+  drawEnabled = true;
+  initCanvas();
+
   //Timer
   var seconds = document.getElementById("countdown").textContent;
   var countdown = setInterval(function() {
@@ -21,8 +27,49 @@ function startGame() {
       document.getElementById("countdown").textContent = seconds;
       if (seconds <= 0) {
         clearInterval(countdown);
+        drawEnabled = false;
       }
   }, 1000);
+}
 
-  //Canvas
+//Canvas
+function initCanvas() {
+  if (drawEnabled == true) {
+    var isDrawing = false;
+    var x = 0;
+    var y = 0
+    var canvas = document.getElementById("draw");
+    var ctx = canvas.getContext("2d");
+
+    canvas.addEventListener("mousedown", e => {
+      x = e.offsetX;
+      y = e.offsetY;
+      isDrawing = true;
+    });
+    canvas.addEventListener("mousemove", e => {
+      if (isDrawing == true) {
+        drawLine(context, x, y, e.offsetX, e.offsetY);
+        x = e.offsetX;
+        y = e.offsetY;
+      }
+    });
+    canvas.addEventListener("mouseup", e => {
+      if (isDrawing == true) {
+        drawLine(context, x, y, e.offsetX, e.offsetY);
+        x = 0;
+        y = 0;
+        isDrawing = false;
+      }
+    });
+  }
+}
+
+function drawLine(context, x1, y1, x2, y2) {
+  context.beginPath();
+  context.strokeStyle = "black";
+  context.lineWidth = 3;
+  context.moveTo(x1, y1);
+  context.lineTo(x2, y2);
+  context.stroke();
+  context.closePath();
 }
