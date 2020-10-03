@@ -1,0 +1,44 @@
+.mainRunner {
+  position: relative;
+}
+
+.img1 {
+  border: 2px solid #000;
+  position: relative;
+}
+
+.drawArea {
+  float: right;
+}
+
+.canv {
+  border: 2px solid #000;
+}
+
+.countdown {
+  font-size: 50px;
+  display: inline-block;
+}
+
+.inlineText {
+  font-size: 50px;
+  display: inline-block;
+}
+
+.header {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.startContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.startButton {
+  width: 150px;
+  height: 75px;
+  font-size: 50px;
+}
