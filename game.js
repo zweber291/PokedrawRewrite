@@ -1,5 +1,6 @@
-//For drawing control before game is started
-var drawEnabled = false;
+//Needed in multiple functions
+var canvas = document.getElementById("draw");
+var ctx = canvas.getContext("2d");
 
 function startGame() {
   document.getElementById("countdown").textContent = 45; //Resets to 45 if restarting the game
@@ -17,7 +18,6 @@ function startGame() {
   //Change image
   document.getElementById("image").src = sourceString;
 
-  drawEnabled = true;
   initCanvas();
 
   //Timer
@@ -27,41 +27,49 @@ function startGame() {
       document.getElementById("countdown").textContent = seconds;
       if (seconds <= 0) {
         clearInterval(countdown);
-        drawEnabled = false;
+        canvas.removeEventListener("mousedown", mouseDown);
+        canvas.removeEventListener("mousemove", mouseMove);
+        canvas.removeEventListener("mouseup", mouseUp);
       }
   }, 1000);
 }
 
 //Canvas
 function initCanvas() {
-  if (drawEnabled == true) {
     var isDrawing = false;
-    var x = 0;
-    var y = 0
-    var canvas = document.getElementById("draw");
-    var ctx = canvas.getContext("2d");
+    //var x = 0;
+    //var y = 0;
+    var coord = {x:0 , y:0};
 
-    canvas.addEventListener("mousedown", e => {
-      x = e.offsetX;
-      y = e.offsetY;
-      isDrawing = true;
-    });
-    canvas.addEventListener("mousemove", e => {
-      if (isDrawing == true) {
-        drawLine(context, x, y, e.offsetX, e.offsetY);
-        x = e.offsetX;
-        y = e.offsetY;
-      }
-    });
-    canvas.addEventListener("mouseup", e => {
-      if (isDrawing == true) {
-        drawLine(context, x, y, e.offsetX, e.offsetY);
-        x = 0;
-        y = 0;
-        isDrawing = false;
-      }
-    });
+    //Erases canvas every time the start button is pressed
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    canvas.addEventListener("mousedown", mouseDown);
+    canvas.addEventListener("mousemove", mouseMove);
+    canvas.addEventListener("mouseup", mouseUp);
+}
+
+function mouseDown(event) {
+  x = event.offsetX;
+  y = event.offsetY;
+  isDrawing = true;
+}
+
+function mouseMove(event) {
+  if (isDrawing == true) {
+    drawLine(ctx, x, y, event.offsetX, event.offsetY);
+    x = event.offsetX;
+    y = event.offsetY;
   }
+}
+
+function mouseUp(event) {
+    if (isDrawing == true) {
+      drawLine(ctx, x, y, event.offsetX, event.offsetY);
+      x = 0;
+      y = 0;
+      isDrawing = false;
+    }
 }
 
 function drawLine(context, x1, y1, x2, y2) {
