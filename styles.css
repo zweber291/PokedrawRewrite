@@ -42,3 +42,129 @@
   height: 75px;
   font-size: 50px;
 }
+
+.colorContainer {
+  position: relative;
+  float: right;
+  width: 470px;
+}
+
+.row1 {
+  margin-left: auto;
+  margin-right: auto;
+  width: 374px;
+}
+
+.row2 {
+  margin-left: auto;
+  margin-right: auto;
+  width: 266px;
+}
+
+.red {
+  height: 50px;
+  width: 50px;
+  background-color: #f42a35;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 2px 0 0 #222, 0px 3px 5px -1px #4F4F4F;
+}
+
+.orange {
+  height: 50px;
+  width: 50px;
+  background-color: #ffa200;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 2px 0 0 #222, 0px 3px 5px -1px #4F4F4F;
+}
+
+.yellow {
+  height: 50px;
+  width: 50px;
+  background-color: #ffd500;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 2px 0 0 #222, 0px 3px 5px -1px #4F4F4F;
+}
+
+.lime {
+  height: 50px;
+  width: 50px;
+  background-color: #a8bf12;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 2px 0 0 #222, 0px 3px 5px -1px #4F4F4F;
+}
+
+.green {
+  height: 50px;
+  width: 50px;
+  background-color: #2eb52f;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 2px 0 0 #222, 0px 3px 5px -1px #4F4F4F;
+}
+
+.cyan {
+  height: 50px;
+  width: 50px;
+  background-color: #00a9b5;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 2px 0 0 #222, 0px 3px 5px -1px #4F4F4F;
+}
+
+.blue {
+  height: 50px;
+  width: 50px;
+  background-color: #325bc5;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 2px 0 0 #222, 0px 3px 5px -1px #4F4F4F;
+}
+
+.pink {
+  height: 50px;
+  width: 50px;
+  background-color: #fad0de;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 2px 0 0 #222, 0px 3px 5px -1px #4F4F4F;
+}
+
+.purple {
+  height: 50px;
+  width: 50px;
+  background-color: #8c6d9b;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 2px 0 0 #222, 0px 3px 5px -1px #4F4F4F;
+}
+
+.brown {
+  height: 50px;
+  width: 50px;
+  background-color: #875e37;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 2px 0 0 #222, 0px 3px 5px -1px #4F4F4F;
+}
+
+.gray {
+  height: 50px;
+  width: 50px;
+  background-color: #8e969b;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 2px 0 0 #222, 0px 3px 5px -1px #4F4F4F;
+}
+
+.black {
+  height: 50px;
+  width: 50px;
+  background-color: #000;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 2px 0 0 #222, 0px 3px 5px -1px #4F4F4F;
+}

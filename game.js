@@ -1,6 +1,7 @@
 //Needed in multiple functions
 var canvas = document.getElementById("draw");
 var ctx = canvas.getContext("2d");
+var strokeColor = "#000";
 
 function startGame() {
   document.getElementById("countdown").textContent = 45; //Resets to 45 if restarting the game
@@ -76,10 +77,60 @@ function mouseUp(event) {
 //Draw line
 function drawLine(context, x1, y1, x2, y2) {
   context.beginPath();
-  context.strokeStyle = "black";
+  context.strokeStyle = strokeColor;
   context.lineWidth = 3;
   context.moveTo(x1, y1);
   context.lineTo(x2, y2);
   context.stroke();
   context.closePath();
+}
+
+
+//Color picking functions
+function red() {
+  strokeColor = "#f42a35"
+}
+
+function orange() {
+  strokeColor = "#ffa200"
+}
+
+function yellow() {
+  strokeColor = "#ffd500"
+}
+
+function lime() {
+  strokeColor = "#a8bf12"
+}
+
+function green() {
+  strokeColor = "#2eb52f"
+}
+
+function cyan() {
+  strokeColor = "#00a9b5"
+}
+
+function blue() {
+  strokeColor = "#325bc5"
+}
+
+function pink() {
+  strokeColor = "#fad0de"
+}
+
+function purple() {
+  strokeColor = "#8c6d9b"
+}
+
+function brown() {
+  strokeColor = "#875e37"
+}
+
+function gray() {
+  strokeColor = "#8e969b"
+}
+
+function black() {
+  strokeColor = "#000"
 }

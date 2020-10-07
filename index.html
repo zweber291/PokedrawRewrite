@@ -11,14 +11,30 @@
     <div class="startContainer">
       <button type="button" class="startButton" onclick="startGame()">Start!</button>
     </div>
-    <div class="inlineText" style="font-family: Arial">
-        Time:&nbsp
-    </div>
+    <div class="inlineText" style="font-family: Arial">Time:&nbsp</div>
     <div id="countdown" class="countdown" style="font-family: Arial">45</div>
     <div class="mainRunner">
-      <img id="image" class="img1" src="bkd.jpg" />
+      <img id="image" class="img1" src="bkd.jpg" loading="eager" />
       <div class="drawArea">
         <canvas id="draw" class="canv" width=475 height=475></canvas>
+      </div>
+    </div>
+    <div class="colorContainer">
+      <div class="row1">
+        <span class="red" onclick="red()"></span>
+        <span class="orange" onclick="orange()"></span>
+        <span class="yellow" onclick="yellow()"></span>
+        <span class="lime" onclick="lime()"></span>
+        <span class="green" onclick="green()"></span>
+        <span class="cyan" onclick="cyan()"></span>
+        <span class="blue" onclick="blue()"></span>
+      </div>
+      <div class="row2">
+        <span class="pink" onclick="pink()"></span>
+        <span class="purple" onclick="purple()"></span>
+        <span class="brown" onclick="brown()"></span>
+        <span class="gray" onclick="gray()"></span>
+        <span class="black" onclick="black()"></span>
       </div>
     </div>
     <!--game.js is javascript for the game to start, time, and change image -->
