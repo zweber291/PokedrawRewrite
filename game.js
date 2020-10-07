@@ -4,9 +4,8 @@ var ctx = canvas.getContext("2d");
 
 function startGame() {
   document.getElementById("countdown").textContent = 45; //Resets to 45 if restarting the game
-  //https://assets.pokemon.com/assets/cms2/img/pokedex/full/###.png <- link for image
-  //893 pokemon
-  var rand = Math.floor((Math.random() * 893) + 1).toString(); //Generate dex number
+  //893 pokemon, so generate random number from 1 to 893
+  var rand = Math.floor((Math.random() * 893) + 1).toString();
   //URL uses 3 digits, so this will generate zeroes before numbers if they are 1 or 2 digits
   if (rand.length == 1) {
     rand = "00" + rand;
@@ -25,6 +24,7 @@ function startGame() {
   var countdown = setInterval(function() {
       seconds--;
       document.getElementById("countdown").textContent = seconds;
+      //When timer hits 0, stop the countdown and remove the event listeners
       if (seconds <= 0) {
         clearInterval(countdown);
         canvas.removeEventListener("mousedown", mouseDown);
@@ -37,9 +37,8 @@ function startGame() {
 //Canvas
 function initCanvas() {
     var isDrawing = false;
-    //var x = 0;
-    //var y = 0;
-    var coord = {x:0 , y:0};
+    var x = 0;
+    var y = 0;
 
     //Erases canvas every time the start button is pressed
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -49,6 +48,8 @@ function initCanvas() {
     canvas.addEventListener("mouseup", mouseUp);
 }
 
+
+//mouseDown, mouseMove, and mouseUp are named after the mouse events used
 function mouseDown(event) {
   x = event.offsetX;
   y = event.offsetY;
@@ -72,6 +73,7 @@ function mouseUp(event) {
     }
 }
 
+//Draw line
 function drawLine(context, x1, y1, x2, y2) {
   context.beginPath();
   context.strokeStyle = "black";
