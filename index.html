@@ -6,19 +6,24 @@
     <title>Pokedraw</title>
   </head>
   <body>
+    <!--Logo-->
     <img src="title.png" class="header" style="width: 350px; height: 100px" />
     <br />
     <div class="startContainer">
+      <!--Button to start the game-->
       <button type="button" class="startButton" onclick="startGame()">Start!</button>
     </div>
     <div class="inlineText" style="font-family: Arial">Time:&nbsp</div>
+    <!--Countdown timer text-->
     <div id="countdown" class="countdown" style="font-family: Arial">45</div>
     <div class="mainRunner">
+      <!--Background for pokemon area before 1st start-->
       <img id="image" class="img1" src="bkd.jpg" loading="eager" />
       <div class="drawArea">
         <canvas id="draw" class="canv" width=475 height=475></canvas>
       </div>
     </div>
+    <!--Holds buttons to change color-->
     <div class="colorContainer">
       <div class="row1">
         <span class="red" onclick="red()"></span>
