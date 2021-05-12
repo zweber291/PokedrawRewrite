@@ -10,7 +10,7 @@ function startGame() {
     gameActive = true;
     document.getElementById("countdown").textContent = 45; //Resets to 45 if restarting the game
     //893 pokemon, so generate random number from 1 to 893
-    var rand = Math.floor((Math.random() * 893) + 1).toString();
+    var rand = Math.floor((Math.random() * 898) + 1).toString();
     //URL uses 3 digits, so this will generate zeroes before numbers if they are 1 or 2 digits
     if (rand.length == 1) {
       rand = "00" + rand;
