@@ -1,28 +1,26 @@
-//Needed in multiple functions
 var canvas = document.getElementById("draw");
 var ctx = canvas.getContext("2d");
 var strokeColor = "#000";
 var gameActive = false;
+var isDrawing = false;
+var isMouseDown = false;
+var canvasX, canvasY;
 
 function startGame() {
-    //Check to see if game is already started
     if (gameActive == false) {
       gameActive = true;
-      document.getElementById("countdown").textContent = 45; //Resets to 45 if restarting the game
-      //898 pokemon, so generate random number from 1 to 898
+      document.getElementById("countdown").textContent = 45;
       var rand = Math.floor((Math.random() * 1025) + 1).toString();
-      //URL uses 4 digits, we need to add 0s depending on the number of digits to match the 
-    switch(rand.length) {
-      case rand.length == 1:
-        rand = "00" + rand;
-      case rand.length == 2:
-        rand = "0" + rand;
-      case rand.length == 3:
-        rand = "0" + rand;
-    }
+      switch(rand.length) {
+        case rand.length == 1:
+          rand = "00" + rand;
+        case rand.length == 2:
+          rand = "0" + rand;
+        case rand.length == 3:
+          rand = "0" + rand;
+      }
 
     var sourceString = "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/" + rand + ".png";
-    //Change image
     document.getElementById("image").src = sourceString;
 
     initCanvas();
@@ -32,7 +30,6 @@ function startGame() {
     var countdown = setInterval(function() {
         seconds--;
         document.getElementById("countdown").textContent = seconds;
-        //When timer hits 0, stop the countdown and remove the event listeners
         if (seconds <= 0) {
           clearInterval(countdown);
           canvas.removeEventListener("mousedown", mouseDown);
@@ -45,13 +42,8 @@ function startGame() {
   }
 }
 
-var isDrawing = false;
-var isMouseDown = false;
-var canvasX, canvasY;
-
 //Canvas
 function initCanvas() {
-    //Erases canvas every time the start button is pressed
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     canvas.addEventListener("mousedown", mouseDown);
@@ -68,7 +60,7 @@ function initCanvas() {
 }
 
 
-//Event functions named after listeners
+//Event functions
 function mouseDown(event) {
   if (event.buttons === 1) {
     isMouseDown = true;
@@ -110,7 +102,6 @@ function canvasBlur(event) {
   isDrawing = false;
 }
 
-//Draw line
 function drawLine(context, x1, y1, x2, y2) {
   context.beginPath();
   context.strokeStyle = strokeColor;
