@@ -2,3 +2,5 @@
 node_modules/
 PokeDraw-win32-x64/
 PokeDraw.zip
+
+out/

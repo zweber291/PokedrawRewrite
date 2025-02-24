@@ -5,20 +5,23 @@ var strokeColor = "#000";
 var gameActive = false;
 
 function startGame() {
-  //Check to see if game is already started
-  if (gameActive == false) {
-    gameActive = true;
-    document.getElementById("countdown").textContent = 45; //Resets to 45 if restarting the game
-    //898 pokemon, so generate random number from 1 to 898
-    var rand = Math.floor((Math.random() * 898) + 1).toString();
-    //URL uses 3 digits, so this will generate zeroes before numbers if they are 1 or 2 digits
-    if (rand.length == 1) {
-      rand = "00" + rand;
+    //Check to see if game is already started
+    if (gameActive == false) {
+      gameActive = true;
+      document.getElementById("countdown").textContent = 45; //Resets to 45 if restarting the game
+      //898 pokemon, so generate random number from 1 to 898
+      var rand = Math.floor((Math.random() * 1025) + 1).toString();
+      //URL uses 4 digits, we need to add 0s depending on the number of digits to match the 
+    switch(rand.length) {
+      case rand.length == 1:
+        rand = "00" + rand;
+      case rand.length == 2:
+        rand = "0" + rand;
+      case rand.length == 3:
+        rand = "0" + rand;
     }
-    if (rand.length == 2) {
-      rand = "0" + rand;
-    }
-    var sourceString = "https://assets.pokemon.com/assets/cms2/img/pokedex/full/" + rand + ".png";
+
+    var sourceString = "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/" + rand + ".png";
     //Change image
     document.getElementById("image").src = sourceString;
 
@@ -35,6 +38,7 @@ function startGame() {
           canvas.removeEventListener("mousedown", mouseDown);
           canvas.removeEventListener("mousemove", mouseMove);
           canvas.removeEventListener("mouseup", mouseUp);
+          canvas.removeEventListener("mouseout", mouseOut);
           gameActive = false;
         }
     }, 1000);
@@ -53,10 +57,11 @@ function initCanvas() {
     canvas.addEventListener("mousedown", mouseDown);
     canvas.addEventListener("mousemove", mouseMove);
     canvas.addEventListener("mouseup", mouseUp);
+    canvas.addEventListener("mouseout", mouseOut);
 }
 
 
-//mouseDown, mouseMove, and mouseUp are named after the mouse events used
+//mouseDown, mouseMove, mouseUp, and mouseOut are named after the mouse events used
 function mouseDown(event) {
   x = event.offsetX;
   y = event.offsetY;
@@ -78,6 +83,10 @@ function mouseUp(event) {
       y = 0;
       isDrawing = false;
     }
+}
+
+function mouseOut(event) {
+    isDrawing == false;
 }
 
 //Draw line
