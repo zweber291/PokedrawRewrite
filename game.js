@@ -45,12 +45,12 @@ function startGame() {
   }
 }
 
+var isDrawing = false;
+var isMouseDown = false;
+var canvasX, canvasY;
+
 //Canvas
 function initCanvas() {
-    var isDrawing = false;
-    var x = 0;
-    var y = 0;
-
     //Erases canvas every time the start button is pressed
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -58,35 +58,56 @@ function initCanvas() {
     canvas.addEventListener("mousemove", mouseMove);
     canvas.addEventListener("mouseup", mouseUp);
     canvas.addEventListener("mouseout", mouseOut);
+    canvas.addEventListener("blur", canvasBlur);
+    canvas.addEventListener("selectstart", function(event) {
+      event.preventDefault();
+    });
+    canvas.addEventListener("contextmenu", function(event) {
+      event.preventDefault
+    });
 }
 
 
-//mouseDown, mouseMove, mouseUp, and mouseOut are named after the mouse events used
+//Event functions named after listeners
 function mouseDown(event) {
-  x = event.offsetX;
-  y = event.offsetY;
-  isDrawing = true;
+  if (event.buttons === 1) {
+    isMouseDown = true;
+    isDrawing = true;
+    canvasX = event.offsetX;
+    canvasY = event.offsetY;
+  }
 }
 
 function mouseMove(event) {
-  if (isDrawing == true) {
-    drawLine(ctx, x, y, event.offsetX, event.offsetY);
-    x = event.offsetX;
-    y = event.offsetY;
+  if (isDrawing && isMouseDown) {
+    drawLine(ctx, canvasX, canvasY, event.offsetX, event.offsetY);
+    canvasX = event.offsetX;
+    canvasY = event.offsetY;
   }
 }
 
 function mouseUp(event) {
-    if (isDrawing == true) {
-      drawLine(ctx, x, y, event.offsetX, event.offsetY);
-      x = 0;
-      y = 0;
-      isDrawing = false;
-    }
+  isMouseDown = false;
+  isDrawing = false;
 }
 
 function mouseOut(event) {
-    isDrawing == false;
+  if (isMouseDown) {
+    isDrawing = false;
+  }
+}
+
+function restartDrawing(event) {
+  if (isMouseDown) {
+    isDrawing = true;
+    canvasX = event.offsetX;
+    canvasY = event.offsetY;
+  }
+}
+
+function canvasBlur(event) {
+  isMouseDown = false;
+  isDrawing = false;
 }
 
 //Draw line
